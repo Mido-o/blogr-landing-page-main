@@ -1,0 +1,11 @@
+$-screens: ("xs": 375px, "sm": 425px, "md": 768px, "lg": 992px, "xl": 1440px);
+@mixin screen-min($size) {
+    @media (min-width: map-get($-screens, #{$size})) {
+        @content;
+    }
+}
+@mixin screen-max($size) {
+    @media (max-width: map-get($-screens, #{$size})) {
+        @content;
+    }
+}
