@@ -1,0 +1,428 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia;
+  background-color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Overpass', 'Ubuntu', sans-serif;
+}
+
+a {
+  color: white;
+}
+
+/*--------END OF DEFAULTS----*/
+header nav, main section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+header section, footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+/*-----INDEX PAGE-----*/
+/*---classes---*/
+.content {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.5s ease-out;
+  transition: max-height 0.5s ease-out;
+}
+
+header nav div > ul > li > a::after {
+  display: inline-block;
+  content: url(../images/icon-arrow-dark.svg);
+  margin-left: 5px;
+  -webkit-transform: var(--pseudo-transform);
+          transform: var(--pseudo-transform);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+/*---End of classes---*/
+/*-----IDs---*/
+#State-of-the-Art-Infrastructure {
+  background-image: url(../images/bg-pattern-circles.svg);
+  background-repeat: no-repeat;
+  background-position-x: -106px;
+  background-position-y: -224px;
+  background-size: 584px;
+  background-color: #2c2d3f;
+  color: white;
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 80px;
+  margin-top: 205px;
+}
+
+/*-----END OF IDs---*/
+/*-----TYPES-----*/
+header {
+  padding: 0 10px;
+  background-color: #ff8f70;
+  background-image: url(../images/bg-pattern-intro.svg);
+  background-repeat: no-repeat;
+  background-position-x: -466px;
+  background-position-y: -562px;
+  background-size: 418%;
+  border-bottom-left-radius: 80px;
+}
+
+header nav {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 50px 10%;
+}
+
+header nav button {
+  border: none;
+  background: transparent;
+}
+
+header nav div {
+  position: absolute;
+  top: 85px;
+  left: 10%;
+  width: 80%;
+  background-color: white;
+  border-radius: 8px;
+  text-align: center;
+  padding: 0 20px;
+  -webkit-box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.5);
+}
+
+header nav div > ul {
+  margin-top: 20px;
+}
+
+header nav div > ul > li {
+  position: relative;
+}
+
+header nav div > ul > li a {
+  padding: 10px;
+  display: block;
+  color: #1f3f5b;
+}
+
+header nav div > ul > li > a:hover {
+  font-weight: bold;
+}
+
+header nav div > ul > li ul {
+  background-color: #EFEFF1;
+  width: 100%;
+  padding: 0 25px;
+  border-radius: 5px;
+}
+
+header nav div span {
+  display: block;
+  border-top: 2px solid #EFEFF1;
+  margin-bottom: 20px;
+}
+
+header nav div span a {
+  padding: 10px 25px;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 25px;
+  color: #1f3f5b;
+}
+
+header nav div span a:hover {
+  font-weight: bold;
+}
+
+header nav div span a:nth-of-type(2) {
+  background: -webkit-gradient(linear, left top, right top, from(#ff8f70), to(#ff3d54));
+  background: linear-gradient(to right, #ff8f70, #ff3d54);
+}
+
+header section {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding-bottom: 10%;
+}
+
+header section h2 {
+  color: white;
+  width: 62%;
+}
+
+header section p {
+  color: white;
+  width: 78%;
+  margin-top: 10px;
+}
+
+header section p button {
+  color: white;
+  background-color: transparent;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid white;
+  border-radius: 25px;
+}
+
+header section p button:hover {
+  background-color: white;
+  color: #ff525d;
+  font-weight: bold;
+}
+
+header section p button:nth-of-type(1) {
+  background-color: white;
+  color: #ff525d;
+}
+
+header section p button:nth-of-type(2):hover {
+  background-color: white;
+}
+
+main {
+  margin-top: 55px;
+  text-align: center;
+}
+
+main section {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 55px;
+}
+
+main section div {
+  padding: 0 36px;
+}
+
+main section p {
+  color: #4b5862;
+}
+
+main h2, main h3 {
+  color: #1f3f5b;
+  margin: 25px 0;
+  text-align: center;
+}
+
+#State-of-the-Art-Infrastructure img {
+  position: relative;
+  bottom: 180px;
+  margin-bottom: -215px;
+}
+
+#State-of-the-Art-Infrastructure div {
+  margin-bottom: 20px;
+}
+
+#State-of-the-Art-Infrastructure h3 {
+  color: white;
+  font-size: 2rem;
+}
+
+#State-of-the-Art-Infrastructure p {
+  color: white;
+}
+
+footer {
+  background-color: #25252d;
+  color: white;
+  margin-top: 60px;
+  text-align: center;
+  border-top-right-radius: 50px;
+  padding: 25px 0;
+}
+
+footer h3 {
+  margin: 15px;
+}
+
+footer ul {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer li {
+  margin: 5px;
+}
+
+footer a {
+  color: #c8c8cb;
+}
+
+footer a:hover {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/*-----END OF TYPES-----*/
+/*------END OF INDEX PAGE---*/
+/*-----media queries----*/
+@media (min-width: 768px) {
+  header {
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 160%;
+    min-height: 45vh;
+  }
+  footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+  }
+}
+
+@media (min-width: 992px) {
+  #primary-nav button {
+    display: none;
+  }
+  #primary-nav div {
+    position: relative;
+    top: 0;
+    left: 0;
+    max-height: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    margin-left: 5%;
+    padding: 0;
+    overflow: visible;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    background-color: transparent;
+  }
+  #primary-nav div > ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 0;
+  }
+  #primary-nav div > ul > li a {
+    color: white;
+  }
+  #primary-nav div > ul > li > a::after {
+    content: url(../images/icon-arrow-light.svg);
+  }
+  #primary-nav div > ul > li ul {
+    position: absolute;
+    background-color: white;
+    padding: 0 20px;
+    width: 160%;
+    text-align: left;
+    -webkit-box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.5);
+  }
+  #primary-nav div > ul > li ul li a {
+    color: #1f3f5b;
+  }
+  #primary-nav div > ul > li ul li:hover a {
+    font-weight: bold;
+  }
+  #primary-nav div span {
+    border-top: none;
+    margin: 0;
+  }
+  #primary-nav div span a {
+    display: inline;
+    color: white;
+  }
+  #primary-nav div span a:active {
+    background-color: white;
+    color: #ff525d;
+  }
+  #primary-nav div span a:nth-of-type(2) {
+    background: transparent;
+    background-color: white;
+    color: #ff525d;
+  }
+  #primary-nav div span a:nth-of-type(2):active {
+    background-color: #ff7a85;
+    color: white;
+  }
+  main, main h3 {
+    text-align: left;
+  }
+  main section:nth-of-type(1) {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+  }
+  main section div, main img {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  main section:nth-of-type(n+2) div {
+    padding: 0 36px 0 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */
