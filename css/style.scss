@@ -1,12 +1,22 @@
+//--------FONTS-------
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap');
+//------End OF FONTS-------
+
+//-------LIBRARIES--------
+@import "../library/defautls";
+@import "../library/screens";
+//------End of LIBRARIES-------
+
+//----------VARIABLES----------
 //primary colors
-$pr_light_red: hsl(356, 100%, 66%); //(CTA text)
-$pr_very_light_red: hsl(355, 100%, 74%); //(CTA hover background)
-$pr_very_dark_blue: hsl(208, 49%, 24%); //(headings)
+$CTA-text: hsl(356, 100%, 66%);
+$CTA-hover-background: hsl(355, 100%, 74%);
+$headings: hsl(208, 49%, 24%);
 //Neutral
-$White: hsl(0, 0%, 100%); //(text)
-$Grayish_blue: hsl(240, 2%, 79%); //(footer text)
-$Very_dark_grayish_blue: hsl(207, 13%, 34%); //(body copy)
-$Very_dark_black_blue: hsl(240, 10%, 16%); //(footer background)
+$text: hsl(0, 0%, 100%);
+$footer-text: hsl(240, 2%, 79%);
+$body-copy: hsl(207, 13%, 34%);
+$footer-background: hsl(240, 10%, 16%);
 //Gradient
 //Background gradient - Intro/CTA mobile nav:
 $bg_very_light_red: hsl(13, 100%, 72%);
@@ -15,41 +25,58 @@ $bg_light_red: hsl(353, 100%, 62%);
 $Very_dark_gray_blue: hsl(237, 17%, 21%);
 $Very_dark_desaturated_blue: hsl(237, 23%, 32%);
 
-//Fonts
-@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap');
+%pseudos {
+    --pseudo-transform: none;
+}
 
-@import "../library/defautls";
-@import "../library/screens";
+$gabarit: 0 10px;
+//-------END OF VARIABLES------
 
+/*------OVERWRITTEN DEFAULTS--------*/
 body {
     font-size: 16px;
     font-family: 'Overpass', 'Ubuntu', sans-serif;
 }
 
 a {
-    color: $White;
+    color: $text;
 }
+/*--------END OF OVERWRITTEN DEFAULTS----*/
 
-/*--------END OF DEFAULTS----*/
+//-------MIXINS-------
 @mixin row {
     display: flex;
     flex-wrap: wrap;
 }
+
+@mixin col {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+@mixin after {
+    &::after {
+        display: inline-block;
+        content: url(../images/icon-arrow-dark.svg);
+        margin-left: 5px;
+        transform: var(--pseudo-transform);
+        transition: transform 0.5s;
+    }
+}
+//------END OF MIXINS------
+
+/*-----INDEX PAGE-----*/
+/*----LAYOUTS----*/
 %row {
     @include row;
 }
 
-@mixin col {
-    display: flex;
-    flex-direction: column;
-}
 %col {
     @include col;
 }
+/*----END OF LAYOUTS----*/
 
-$gabarit: 0 10px;
-
-/*-----INDEX PAGE-----*/
 /*---classes---*/
 .content {
     max-height: 0;
@@ -57,16 +84,8 @@ $gabarit: 0 10px;
     transition: max-height 0.5s ease-out;
 }
 
-%pseudos {
-    --pseudo-transform: none;
-}
-
-%arrow {
-    display: inline-block;
-    content: url(../images/icon-arrow-dark.svg);
-    margin-left: 5px;
-    transform: var(--pseudo-transform);
-    transition: transform 0.5s;
+.arrow {
+    @include after;
 }
 /*---End of classes---*/
 
@@ -78,11 +97,10 @@ $gabarit: 0 10px;
     background-position-y: -224px;
     background-size: 584px;
     background-color: $Very_dark_gray_blue;
-    color: $White;
+    color: $text;
     border-top-right-radius: 80px;
     border-bottom-left-radius: 80px;
     margin-top: 205px;
-    //position: relative;
 }
 /*-----END OF IDs---*/
 /*-----TYPES-----*/
@@ -118,18 +136,10 @@ header {
             & > ul {
                 margin-top: 20px;
                 & > li {
-                    position: relative;
                     a {
                         padding: 10px;
                         display: block;
-                        color: $pr_very_dark_blue;
-                    }
-                    & > a::after {
-                        @extend %arrow;
-                    }
-                    & > a:hover {
-                        //text-decoration: underline;
-                        font-weight: bold;
+                        color: $headings;
                     }
                     ul {
                         background-color: #EFEFF1;
@@ -144,18 +154,17 @@ header {
                 border-top: 2px solid #EFEFF1;
                 margin-bottom: 20px;
                 a {
-                    padding: 10px 25px;
                     display: block;
                     width: 50%;
+                    padding: 10px 25px;
                     margin: 0 auto;
+                    color: $headings;
+                    font-weight: bold;
                     border-radius: 25px;
-                    color: $pr_very_dark_blue;
-                    &:hover {
-                        font-weight: bold;
-                    }
                 }
                 a:nth-of-type(2) {
                     background: linear-gradient(to right, $bg_very_light_red,  $bg_light_red);
+                    color: $text;
                 }
             }
         }
@@ -167,33 +176,33 @@ header {
         text-align: center;
         padding-bottom: 10%;
         h2 {
-            color: $White;
-            width: 62%;
+            color: $text;
+            width: 80%;
+            font-size: 2rem;
         }
         p {
-            color: $White;
+            color: $text;
             width: 78%;
             margin-top: 10px;
-            button {
-                color: $White;
-                background-color: transparent;
+        }
+        span {
+            margin-top: 25px;
+            a {
+                color: $text;
+                font-weight: bold;
                 padding: 10px;
                 margin: 10px;
-                border: 1px solid $White;
+                border: 1px solid $text;
                 border-radius: 25px;
+            }
+            a:nth-of-type(1) {
+                background-color: white;
+                color: $CTA-text;
                 &:hover {
-                    background-color: $White;
-                    color: $pr_light_red;
-                    font-weight: bold;
+                    background-color: $CTA-hover-background;
+                    color: $text;
+                    border: none;
                 }
-            }
-            button:nth-of-type(1) {
-                background-color: white;
-                color: $pr_light_red;
-            }
-            button:nth-of-type(2):hover {
-                background-color: white;
-                //color: $Very_dark_black_blue;
             }
         }
     }
@@ -210,60 +219,53 @@ main {
             padding: 0 36px;
         }
         p {
-            color: $Very_dark_grayish_blue;
+            color: $body-copy;
         }
     }
     h2, h3 {
-        color: $pr_very_dark_blue;
+        color: $headings;
         margin: 25px 0;
         text-align: center;
     }
 }
 
-#State-of-the-Art-Infrastructure img {
-    position: relative;
-    bottom: 180px;
-    margin-bottom: -215px;
-}
-
-#State-of-the-Art-Infrastructure div {
-    margin-bottom: 20px;
-}
-
-#State-of-the-Art-Infrastructure h3 {
-    color: $White;
-    font-size: 2rem;
-}
-
-#State-of-the-Art-Infrastructure p {
-    color: $White;
-}
+#State-of-the-Art-Infrastructure {
+    img {
+        position: relative;
+        bottom: 180px;
+        margin-bottom: -215px;
+    }
+    div {
+        margin-bottom: 20px;
+    }
+    h3 {
+        color: $text;
+        font-size: 2rem;
+    }
+    p {
+        color: $text;
+    }
+} 
 
 footer {
-    background-color: $Very_dark_black_blue;
-    color: $White;
+    background-color: $footer-background;
+    color: $text;
     margin-top: 60px;
     text-align: center;
     border-top-right-radius: 50px;
     padding: 25px 0;
-}
-
-footer h3 {
-    margin: 15px;
-}
-
-footer ul {
-    @extend %col;
-    align-items: center;
-}
-
-footer li {
-    margin: 5px;
-}
-
-footer {
+    h3 {
+        margin: 15px;
+    }
+    ul {
+        @extend %col;
+        align-items: center;
+    }
+    li {
+        margin: 5px;
+    }
     a {
-        color: $Grayish_blue;
+        color: $footer-text;
         &:hover {
             color: white;
             text-decoration: underline;
@@ -291,74 +293,79 @@ footer {
 }
 
 @include screen-min(lg) {
-    #primary-nav {
-        button {
-            display: none;
-        }
-
-        div {
-            position: relative;
-            top: 0;
-            left: 0;
-            max-height: 500px;
-            @include row;
-            justify-content: space-between;
-            align-items: center;
-            flex: 1;
-            margin-left: 5%;
-            padding: 0;
-            overflow: visible;
-            box-shadow: none;
-            background-color: transparent;
-            & > ul {
+    header {
+        #primary-nav {
+            button {
+                display: none;
+            }
+    
+            div {
+                position: relative;
+                top: 0;
+                left: 0;
+                max-height: 500px;
                 @include row;
-                margin: 0;
-                & > li {
+                justify-content: space-between;
+                align-items: center;
+                flex: 1;
+                margin-left: 5%;
+                padding: 0;
+                overflow: visible;
+                box-shadow: none;
+                background-color: transparent;
+                & > ul {
+                    @include row;
+                    margin: 0;
+                    & > li {
+                        position: relative;
+                        & > a {
+                            color: white;
+                            &::after {
+                                content: url(../images/icon-arrow-light.svg);
+                            }
+                        }
+                        a:hover {
+                            font-weight: bold;
+                        }
+                        ul {
+                            position: absolute;
+                            background-color: white;
+                            width: 160%;
+                            text-align: left;
+                            box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.5);
+                        }
+                    }
+                }
+                span {
+                    border-top: none;
+                    margin: 0;
                     a {
+                        display: inline;
                         color: white;
+                        &:active {
+                            background-color: white;
+                            color: $CTA-text;
+                        }
                     }
-                    & > a::after {
-                        content: url(../images/icon-arrow-light.svg);
-                    }
-                    ul {
-                        position: absolute;
+                    a:nth-of-type(2) {
+                        background: transparent;
                         background-color: white;
-                        padding: 0 20px;
-                        width: 160%;
-                        text-align: left;
-                        box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.5);
-                        li {
-                            a {
-                                color: $pr_very_dark_blue;
-                            }
-                            &:hover {
-                                a {
-                                    font-weight: bold;
-                                }
-                            }
+                        color: $CTA-text;
+                        &:hover {
+                            background-color: $CTA-hover-background;
+                            color: white;
                         }
                     }
                 }
             }
+        }
+    
+        section {
             span {
-                border-top: none;
-                margin: 0;
-                a {
-                    display: inline;
-                    color: white;
-                    &:active {
-                        background-color: white;
-                        color: $pr_light_red;
-                    }
-                }
-                a:nth-of-type(2) {
-                    background: transparent;
-                    background-color: white;
-                    color: $pr_light_red;
-                    &:active {
-                        background-color: $pr_very_light_red;
-                        color: white;
-                    }
+                a:hover {
+                    background-color: $text;
+                    color: $CTA-text;
+                    font-weight: bold;
                 }
             }
         }
