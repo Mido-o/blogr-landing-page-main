@@ -1,39 +1,46 @@
-const collapsibles = document.getElementsByClassName("collapsible");
-const content = document.getElementsByClassName("content");
+const collapsibles = Array.from(document.getElementsByClassName("collapsible"));
+const content = Array.from(document.getElementsByClassName("content"));
+const coll_cont = new Map();
+collapsibles.forEach((value, idx) => coll_cont.set(value, content[idx]));
 let src1 = "images/icon-hamburger.svg";
 let src2 = "images/icon-close.svg";
-for (let i = 0; i < collapsibles.length; ++i) {
-    collapsibles[i].addEventListener("click", function (e) {
-        let img = this.firstElementChild;
-        //let content = this.nextElementSibling;
-        this.classList.toggle("active");
-        if (content[i].style.maxHeight) {
-            content[i].style.maxHeight = null;
-            if (img) {
-                img.src = src1;
-            }
-            collapsibles[i].style.setProperty("--pseudo-transform", 'rotate(0)');
-        } else {
-            content[i].style.maxHeight = 500 + "px";
-            if (img) {
-                img.src = src2;
-            }
-            collapsibles[i].style.setProperty("--pseudo-transform", 'rotate(-180deg)');
-        }
-    });
-}
 
-/*const dropDown = document.getElementsByClassName("dropDown");
-const dropDownContent = document.getElementsByClassName("dropDownContent");
-for (let i = 0; i < dropDown.length; ++i) {
-    dropDown[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        if (dropDownContent[i].style.maxHeight) {
-            dropDownContent[i].style.maxHeight = null;
-            dropDown[i].style.setProperty("--pseudo-transform", 'rotate(0)');
-        } else {
-            dropDownContent[i].style.maxHeight = 500 + "px";
-            dropDown[i].style.setProperty("--pseudo-transform", 'rotate(-180deg)');
+let temp, cont;
+
+window.addEventListener("click", function (event) {
+    let This = event.target;
+    if (This.classList.contains("collapsible")) {
+        console.log("The target is: ", This);
+        temp = This;
+        cont = coll_cont.get(temp);
+        collapse(This);
+    } else if (This !== temp && typeof (cont) !== "undefined") {
+        console.log("The other element is: ", This);
+        if (cont.style.maxHeight) {
+            temp.style.fontWeight = "normal";
+            temp.style.setProperty("--pseudo-transform", 'rotate(0)');
+            cont.style.maxHeight = null;
         }
-    });
-}*/
+    }
+});
+
+function collapse(This) {
+    let content = coll_cont.get(This);
+    This.classList.toggle("active");
+    let img = This.firstElementChild;
+    if (content.style.maxHeight) {
+        This.style.fontWeight = "normal";
+        This.style.setProperty("--pseudo-transform", 'rotate(0)');
+        if (img) {
+            img.src = src1;
+        }
+        content.style.maxHeight = null;
+    } else {
+        This.style.fontWeight = "bold";
+        This.style.setProperty("--pseudo-transform", 'rotate(-180deg)');
+        if (img) {
+            img.src = src2;
+        }
+        content.style.maxHeight = 500 + "px";
+    }
+}
