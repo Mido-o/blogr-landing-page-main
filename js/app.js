@@ -11,12 +11,13 @@ let test, testTemp;
 window.addEventListener("click", function (event) {
     let This = event.target;
     test = This;
-    contParent = This.closest(".content");
+    //contParent = This.closest(".content");
     if (This.getAttribute("src")) {
         img = This;
     } else { img = undefined; }
     if (This.matches(".collapsible")) {
         console.log("The target is: ", This);
+        contParent = This.closest(".content");
         if (temp !== undefined && This !== temp) {
             console.log("2nd case");
             cont = coll_cont.get(This);
@@ -30,7 +31,12 @@ window.addEventListener("click", function (event) {
         }
     } else {
         if (temp !== undefined && contTemp.style.maxHeight) {
-            close(temp, contTemp);
+            console.log("3rd case.1");
+            close(temp, contTemp, img);
+            if (contParent !== null && contParent.style.maxHeight) {
+                console.log("3rd case.2");
+                close(This, contParent, img);
+            }
         }
     }
 });
@@ -47,18 +53,15 @@ function collapse(This, content, img) {
 }
 
 function open(This, content, img) {
-    if (contTemp !== undefined && contParent !== null && contTemp === contParent && contTemp.style.maxHeight) { //temp !== undefined && contTemp.style.maxHeight && parent !== null && !parent.matches(".active")
+    if (contTemp !== undefined && contTemp === contParent && contTemp.style.maxHeight) { //contTemp !== undefined && contParent !== null && contTemp === contParent && contTemp.style.maxHeight
         console.log("1st open case");
         temp = This;
         contTemp = contTemp = coll_cont.get(temp);
-        close(temp, contTemp);
-    } else if ((contTemp !== undefined && contParent !== null && contTemp !== contParent && contTemp.style.maxHeight) || contTemp !== undefined && contTemp.style.maxHeight) {
+        close(temp, contTemp, img);
+    } else if ((contTemp !== undefined && contTemp !== contParent && contTemp.style.maxHeight) || contTemp !== undefined && contTemp.style.maxHeight) {
         console.log("2nd open case");
-        close(temp, contTemp);
-    } /*else if (contTemp !== undefined && contTemp.style.maxHeight) {
-        console.log("3rd open case");
-        close(temp, contTemp);
-    }*/
+        close(temp, contTemp, img);
+    }
     This.style.fontWeight = "bold";
     This.style.setProperty("--pseudo-transform", 'rotate(-180deg)');
     if (img) {
