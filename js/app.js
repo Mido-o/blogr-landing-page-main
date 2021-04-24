@@ -30,7 +30,7 @@ window.addEventListener("click", function (event) {
         }
     } else {
         if (temp !== undefined && contTemp.style.maxHeight) {
-            close(temp, contTemp, img);
+            close(temp, contTemp);
         }
     }
 });
@@ -47,18 +47,18 @@ function collapse(This, content, img) {
 }
 
 function open(This, content, img) {
-    if (contTemp !== undefined && contParent !== null && contParent.matches(".active") && contTemp === contParent && contTemp.style.maxHeight) { //temp !== undefined && contTemp.style.maxHeight && parent !== null && !parent.matches(".active")
+    if (contTemp !== undefined && contParent !== null && contTemp === contParent && contTemp.style.maxHeight) { //temp !== undefined && contTemp.style.maxHeight && parent !== null && !parent.matches(".active")
         console.log("1st open case");
         temp = This;
         contTemp = contTemp = coll_cont.get(temp);
         close(temp, contTemp);
-    } else if (contTemp !== undefined && contParent !== null && contParent.matches(".active") && contTemp !== contParent && contTemp.style.maxHeight) {
+    } else if ((contTemp !== undefined && contParent !== null && contTemp !== contParent && contTemp.style.maxHeight) || contTemp !== undefined && contTemp.style.maxHeight) {
         console.log("2nd open case");
         close(temp, contTemp);
-    } else if (contTemp !== undefined && contTemp.style.maxHeight) {
-        console.log("2nd open case");
+    } /*else if (contTemp !== undefined && contTemp.style.maxHeight) {
+        console.log("3rd open case");
         close(temp, contTemp);
-    }
+    }*/
     This.style.fontWeight = "bold";
     This.style.setProperty("--pseudo-transform", 'rotate(-180deg)');
     if (img) {
