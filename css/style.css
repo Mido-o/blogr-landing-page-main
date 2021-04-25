@@ -68,20 +68,20 @@ header section, footer ul {
 
 .arrow::after {
   display: inline-block;
-  content: url(../images/icon-arrow-dark.svg);
+  content: url(https://raw.githubusercontent.com/Mido-o/blogr-landing-page-main/d962ba9de426c018bee3dd49fb9830ff27034cee/images/icon-arrow-dark.svg);
   margin-left: 5px;
   -webkit-transform: var(--pseudo-transform);
           transform: var(--pseudo-transform);
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0, 1, 0, 1);
+  transition: -webkit-transform 0.5s cubic-bezier(0, 1, 0, 1);
+  transition: transform 0.5s cubic-bezier(0, 1, 0, 1);
+  transition: transform 0.5s cubic-bezier(0, 1, 0, 1), -webkit-transform 0.5s cubic-bezier(0, 1, 0, 1);
 }
 
 /*---End of classes---*/
 /*-----IDs---*/
 #State-of-the-Art-Infrastructure {
-  background-image: url(../images/bg-pattern-circles.svg);
+  background-image: url(https://raw.githubusercontent.com/Mido-o/blogr-landing-page-main/d962ba9de426c018bee3dd49fb9830ff27034cee/images/bg-pattern-circles.svg);
   background-repeat: no-repeat;
   background-position-x: -106px;
   background-position-y: -224px;
@@ -98,7 +98,7 @@ header section, footer ul {
 header {
   padding: 0 10px;
   background-color: #ff8f70;
-  background-image: url(../images/bg-pattern-intro.svg);
+  background-image: url(https://raw.githubusercontent.com/Mido-o/blogr-landing-page-main/d962ba9de426c018bee3dd49fb9830ff27034cee/images/bg-pattern-intro.svg);
   background-repeat: no-repeat;
   background-position-x: -466px;
   background-position-y: -562px;
@@ -119,6 +119,10 @@ header nav {
 header nav button {
   border: none;
   background: transparent;
+}
+
+header nav button img {
+  display: block;
 }
 
 header nav div {
@@ -365,7 +369,7 @@ footer a:hover {
     color: white;
   }
   header #primary-nav div > ul > li > a::after {
-    content: url(../images/icon-arrow-light.svg);
+    content: url(https://raw.githubusercontent.com/Mido-o/blogr-landing-page-main/d962ba9de426c018bee3dd49fb9830ff27034cee/images/icon-arrow-light.svg);
   }
   header #primary-nav div > ul > li a:hover {
     font-weight: bold;

@@ -58,10 +58,10 @@ a {
 @mixin after {
     &::after {
         display: inline-block;
-        content: url(../images/icon-arrow-dark.svg);
+        content: url(https://raw.githubusercontent.com/Mido-o/blogr-landing-page-main/d962ba9de426c018bee3dd49fb9830ff27034cee/images/icon-arrow-dark.svg);
         margin-left: 5px;
         transform: var(--pseudo-transform);
-        transition: transform 0.5s;
+        transition: transform 0.5s cubic-bezier(0, 1, 0, 1);
     }
 }
 //------END OF MIXINS------
@@ -91,7 +91,7 @@ a {
 
 /*-----IDs---*/
 #State-of-the-Art-Infrastructure {
-    background-image: url(../images/bg-pattern-circles.svg);
+    background-image: url(https://raw.githubusercontent.com/Mido-o/blogr-landing-page-main/d962ba9de426c018bee3dd49fb9830ff27034cee/images/bg-pattern-circles.svg);
     background-repeat: no-repeat;
     background-position-x: -106px;
     background-position-y: -224px;
@@ -107,7 +107,7 @@ a {
 header {
     padding: $gabarit;
     background-color: $bg_very_light_red;
-    background-image: url(../images/bg-pattern-intro.svg);
+    background-image: url(https://raw.githubusercontent.com/Mido-o/blogr-landing-page-main/d962ba9de426c018bee3dd49fb9830ff27034cee/images/bg-pattern-intro.svg);
     background-repeat: no-repeat;
     background-position-x: -466px;
     background-position-y: -562px;
@@ -122,6 +122,9 @@ header {
         button {
             border: none;
             background: transparent;
+            img {
+                display: block;
+            }
         }
         div {
             position: absolute;
@@ -321,7 +324,7 @@ footer {
                         & > a {
                             color: white;
                             &::after {
-                                content: url(../images/icon-arrow-light.svg);
+                                content: url(https://raw.githubusercontent.com/Mido-o/blogr-landing-page-main/d962ba9de426c018bee3dd49fb9830ff27034cee/images/icon-arrow-light.svg);
                             }
                         }
                         a:hover {
