@@ -5,17 +5,18 @@ collapsibles.forEach((value, idx) => coll_cont.set(value, content[idx]));
 let src1 = "images/icon-hamburger.svg";
 let src2 = "images/icon-close.svg";
 
-let temp, contTemp, contParent, cont, img; //temp: will be the previously collapsible element and contTemp is its content. contParent: the parent content, should have the calss content. cont: is the content of the currently clicked element. img: is the image of the clicked element, if exsits.
+let temp, contTemp, contParent, cont, img, parentImg; //temp: will be the previously collapsible element and contTemp is its content. contParent: the parent content, should have the calss content. cont: is the content of the currently clicked element. img: is the image of the clicked element, if exsits.
 let test, testTemp;
 
 window.addEventListener("click", function (event) {
     let This = event.target; //to retrive the element that was clicked.
     test = This;
-    if (This.getAttribute("src")) { //if that element has a photo, retrive it.
-        img = This;
-    } else { img = undefined; }
     if (This.matches(".collapsible")) { //if that element has the class collapsible (collapsible element).
         console.log("The target is: ", This);
+        if (This.getAttribute("src")) {
+            img = This;
+            parentImg = img;
+        } else { img = undefined; } //if that element has a photo, retrive it.
         contParent = This.closest(".content"); //retrive the nearest parent, of the clicked element, with the calss content (parent content).
         if (temp !== undefined && This !== temp) { //if the currently clicked element is not the previously clicked element.
             console.log("2nd case");
@@ -34,7 +35,7 @@ window.addEventListener("click", function (event) {
             close(temp, contTemp, img);
             if (contParent !== null && contParent.style.maxHeight) { //if the parent content is open.
                 console.log("3rd case.2");
-                close(This, contParent, img);
+                close(This, contParent, parentImg);
             }
         }
     }
@@ -56,7 +57,6 @@ function open(This, content, img) {
         console.log("1st open case");
         temp = This;
         contTemp = contTemp = coll_cont.get(temp);
-        //close(temp, contTemp, img);
     } else if ((contTemp !== undefined && contTemp !== contParent && contTemp.style.maxHeight)) { //before opening a new element, and we're inside the content, and if the previously opened content is not the parent content, close the previously opened content.
         console.log("2nd open case");
         close(temp, contTemp, img);
