@@ -5,19 +5,19 @@ collapsibles.forEach((value, idx) => coll_cont.set(value, content[idx]));
 let src1 = "images/icon-hamburger.svg";
 let src2 = "images/icon-close.svg";
 
-let temp, contTemp, contParent, cont, img; //temp: temporary collapsible element and contTemp is its content. contParent: the parent element, will have the calss content. cont: is the content of the currently clicked element. img: is the image of the clicked element, if exsits.
+let temp, contTemp, contParent, cont, img; //temp: will be the previously collapsible element and contTemp is its content. contParent: the parent content, should have the calss content. cont: is the content of the currently clicked element. img: is the image of the clicked element, if exsits.
 let test, testTemp;
 
 window.addEventListener("click", function (event) {
-    let This = event.target; //to retrive the element that was clicked
+    let This = event.target; //to retrive the element that was clicked.
     test = This;
-    if (This.getAttribute("src")) { //if that element has a photo, retrive it
+    if (This.getAttribute("src")) { //if that element has a photo, retrive it.
         img = This;
     } else { img = undefined; }
-    if (This.matches(".collapsible")) { //if that element has the class collapsible
+    if (This.matches(".collapsible")) { //if that element has the class collapsible (collapsible element).
         console.log("The target is: ", This);
-        contParent = This.closest(".content"); //retrive the nearest parent, of the clicked element, with the calss content
-        if (temp !== undefined && This !== temp) {
+        contParent = This.closest(".content"); //retrive the nearest parent, of the clicked element, with the calss content (parent content).
+        if (temp !== undefined && This !== temp) { //if the currently clicked element is not the previously clicked element.
             console.log("2nd case");
             cont = coll_cont.get(This);
             collapse(This, cont, img);
@@ -29,10 +29,10 @@ window.addEventListener("click", function (event) {
             collapse(temp, contTemp, img);
         }
     } else {
-        if (temp !== undefined && contTemp.style.maxHeight) { //if the clicked element is not collapsible and a previous(temporary) content was open
+        if (temp !== undefined && contTemp.style.maxHeight) { //if the clicked element is not collapsible and a previous content was open.
             console.log("3rd case.1");
             close(temp, contTemp, img);
-            if (contParent !== null && contParent.style.maxHeight) { //if the content of the parent element (that has the calss content) is open
+            if (contParent !== null && contParent.style.maxHeight) { //if the parent content is open.
                 console.log("3rd case.2");
                 close(This, contParent, img);
             }
@@ -52,12 +52,12 @@ function collapse(This, content, img) {
 }
 
 function open(This, content, img) {
-    if (contTemp !== undefined && contTemp === contParent) { //before opening the new element, and we're inside the content, if the previously opened content is the parent content, dont't close it. Just update the previous element and its content to be the currently clicked element.
+    if (contTemp !== undefined && contTemp === contParent) { //before opening the new element, and we're inside the content, and if the previously opened content is the parent content, dont't close it. Just update the previous element and its content to be the currently clicked element.
         console.log("1st open case");
         temp = This;
         contTemp = contTemp = coll_cont.get(temp);
         //close(temp, contTemp, img);
-    } else if ((contTemp !== undefined && contTemp !== contParent && contTemp.style.maxHeight) || contTemp !== undefined && contTemp.style.maxHeight) { //before opening a new element, and we're inside the content, close the previously opened content
+    } else if ((contTemp !== undefined && contTemp !== contParent && contTemp.style.maxHeight)) { //before opening a new element, and we're inside the content, and if the previously opened content is not the parent content, close the previously opened content.
         console.log("2nd open case");
         close(temp, contTemp, img);
     }
