@@ -61,9 +61,16 @@ header section, footer ul {
 /*---classes---*/
 .content {
   max-height: 0;
+  opacity: 0;
   overflow: hidden;
-  -webkit-transition: max-height 0.5s ease-out;
-  transition: max-height 0.5s ease-out;
+  -webkit-transition: max-height 1s, opacity 1s;
+  transition: max-height 1s, opacity 1s;
+}
+
+.active {
+  max-height: 500px;
+  opacity: 1;
+  overflow: visible;
 }
 
 .arrow::after {
@@ -333,6 +340,8 @@ footer a:hover {
     top: 0;
     left: 0;
     max-height: 500px;
+    opacity: 1;
+    overflow: visible;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
